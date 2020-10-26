@@ -12,49 +12,44 @@
                 body {
                     font-family: Arial;
                     padding: 10px;
-                    background:burlywood;
+                    background: darkgrey;
                     }
                 header {
-                    color: white;
+                    color: black;
                     text-align: center;
+                    font-size: 30px;
                 }    
         
         /* Header/Blog Title */
                 .header {
                     padding: 30px;
                     text-align: center;
-                    background: white;
                     }
         
                 .header h1 {
                     font-size: 50px;
                     }
         
-        /* Style the top navigation bar */
-                .topnav {
-                    overflow: hidden;
-                    background-color: #333;
-                    }
-        
-        /* Style the topnav links */
-                .topnav a {
-                    float: left;
-                    display: block;
-                    color: #f2f2f2;
-                    text-align: center;
-                    padding: 14px 16px;
-                    text-decoration: none;
-                    font-size-adjust: 10px;
-                    }
                 .nav-link {
                     text-align: center;
                 }
-        
-        /* Change color on hover */
-                .topnav a:hover {
-                    background-color: #ddd;
+                #navbar {
+                    grid-area: navbar;
+                    position: fixed;
+                }
+                #navbar a {
+                    display: block;
+                    border: 1px solid black;
+                    padding: 7px;
+                    margin: 7px 0;
+                    text-decoration: none;
                     color: black;
-                    }
+                    background-color: white;
+                }
+                #main-doc {
+                    grid-area: maincContent;
+                }
+        
         
         /* Create two unequal columns that floats next to each other */
         /* Left column */
@@ -88,16 +83,19 @@
         
                     
         /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
-            @media screen and (max-width: 800px) {
-                .leftcolumn, .rightcolumn {   
-                    width: 100%;
-                    padding: 0;
+            @media screen and (max-width: 750px) {
+                 .main-body {   
+                    grid-template-columns: 1fr;
+                    grid-template-areas: "navbar" "mainContent";
                     }
+                 #navbar {
+                     position: inherit;
+                 }
                 }
         
         /* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
             @media screen and (max-width: 400px) {
-                .topnav a {
+                #navbar a {
                     float: none;
                     width: 100%;
                     }
@@ -105,10 +103,11 @@
             </style>
         </head>
         <body>
+          <div class="main-body"></div> 
             <div class="row">
                 <div class="leftcolumn">
                     <div class="card">
-                        <nav class="topnav" id="navbar">
+                        <nav id="navbar">
                             <header>
                                The Process:
                             </header>
@@ -181,7 +180,8 @@
                         </div>
                     </main>
                 </div>
-            </div>      
+            </div>
+          </div>       
         </body>
     <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
 </html>
